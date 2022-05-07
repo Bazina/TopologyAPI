@@ -67,6 +67,10 @@ class MainControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .param("TopologyID", "top2"));
 
+        mvc.perform(get("http://localhost:8080/topology/read")
+                .accept(MediaType.APPLICATION_JSON)
+                .param("fileName", "src/main/resources/static/topology.json"));
+
         String expected = "[{\"id\":\"top3\"," +
                           "\"components\":[{\"type\":\"resistor\"," +
                           "\"id\":\"r1\"," +
