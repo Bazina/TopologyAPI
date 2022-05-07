@@ -16,29 +16,53 @@ public class Specifications {
         this.minValue = minValue;
     }
 
+    /***
+     * Returns the defaultValue.
+     * @return the defaultValue.
+     */
     @JsonProperty("default")
     protected double getDefaultValue() {
         return defaultValue;
     }
 
+    /***
+     * Sets the defaultValue.
+     * @param defaultValue the defaultValue to set.
+     */
     protected void setDefaultValue(double defaultValue) {
         this.defaultValue = defaultValue;
     }
 
+    /***
+     * Returns the maxValue.
+     * @return the maxValue.
+     */
     @JsonProperty("max")
     protected double getMaxValue() {
         return maxValue;
     }
 
+    /***
+     * Sets the maxValue.
+     * @param maxValue the maxValue to set.
+     */
     protected void setMaxValue(double maxValue) {
         this.maxValue = maxValue;
     }
 
+    /***
+     * Returns the minValue.
+     * @return the minValue.
+     */
     @JsonProperty("min")
     protected double getMinValue() {
         return minValue;
     }
 
+    /***
+     * Sets the minValue.
+     * @param minValue the minValue to set.
+     */
     protected void setMinValue(double minValue) {
         this.minValue = minValue;
     }

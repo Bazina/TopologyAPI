@@ -17,12 +17,20 @@ public class Resistor extends Component {
         this.specifications = specifications;
     }
 
+    /***
+     * Returns the specifications.
+     * @return the specifications
+     */
     @Override
     @JsonProperty("resistance")
     protected Specifications getSpecifications() {
         return specifications;
     }
 
+    /***
+     * Sets the specifications.
+     * @param specifications the specifications of the component.
+     */
     @Override
     protected void setSpecifications(Specifications specifications) {
         this.specifications = specifications;

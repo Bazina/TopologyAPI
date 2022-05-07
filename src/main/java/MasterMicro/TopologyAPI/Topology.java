@@ -17,20 +17,36 @@ public class Topology {
         this.components = components;
     }
 
+    /***
+     * Returns the id.
+     * @return the id.
+     */
     @JsonProperty("id")
     public String getId() {
         return id;
     }
 
+    /***
+     * Sets the id.
+     * @param id the id.
+     */
     public void setId(String id) {
         this.id = id;
     }
 
+    /***
+     * Returns the components.
+     * @return the components.
+     */
     @JsonProperty("components")
     public ArrayList<Component> getComponents() {
         return components;
     }
 
+    /***
+     * Sets the components.
+     * @param components the components.
+     */
     public void setComponents(ArrayList<Component> components) {
         this.components = components;
     }

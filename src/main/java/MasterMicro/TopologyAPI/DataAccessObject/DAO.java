@@ -17,40 +17,53 @@ public class DAO implements DAOI {
         topologies = new HashMap<>();
     }
 
-    public static void main(String[] args) throws IOException {
-        DAO dao = new DAO();
-        dao.load("src/main/resources/static/topology.json");
-        dao.load("src/main/resources/static/topology2.json");
-        dao.queryDevicesWithNetlistNode("top1", "n1");
-        dao.queryDevices("top1");
-        dao.queryDevicesWithNetlistNode("top2", "n2");
-        dao.save("top1");
-        dao.save("top2");
-        dao.delete("top1");
-    }
-
+    /***
+     * Loads a topology from a file.
+     * @param fileName the name of the file.
+     * @throws IOException if the file does not exist.
+     */
     @Override
     public void load(String fileName) throws IOException {
         Topology topology = mapper.readValue(new File(fileName), Topology.class);
         addTopology(topology);
     }
 
+    /***
+     * Saves a given topology to a JSON file.
+     * @param TopologyID the ID of the topology.
+     * @throws IOException if the topology does not exist.
+     */
     @Override
     public void save(String TopologyID) throws IOException {
         Topology topology = topologies.get(TopologyID);
         mapper.writeValue(new File("src/main/resources/static/" + topology.getId() + ".json"), topology);
     }
 
+    /***
+     * Deletes the topology with the given ID.
+     * @param ID the ID of the topology.
+     */
     @Override
     public void delete(String ID) {
         topologies.remove(ID);
     }
 
+    /***
+     * Returns the components of the topology with the given ID.
+     * @param TopologyID the ID of the topology.
+     * @return the components of the topology with the given ID.
+     */
     @Override
     public ArrayList<Component> queryDevices(String TopologyID) {
         return topologies.get(TopologyID).getComponents();
     }
 
+    /***
+     * Returns the component that has specific node within a topology with a given ID.
+     * @param TopologyID the ID of the topology.
+     * @param NetlistNodeID the ID of the node.
+     * @return the component that has specific node within a topology with a given ID.
+     */
     @Override
     public ArrayList<Component> queryDevicesWithNetlistNode(String TopologyID, String NetlistNodeID) {
         ArrayList<Component> components = new ArrayList<>();
@@ -62,10 +75,18 @@ public class DAO implements DAOI {
         return components;
     }
 
+    /***
+     * Adds a topology to the DAO.
+     * @param topology the topology to be added.
+     */
     private void addTopology(Topology topology) {
         topologies.put(topology.getId(), topology);
     }
 
+    /***
+     * Returns the topologies in the DAO.
+     * @return the topologies in the DAO.
+     */
     @Override
     public ArrayList<Topology> getTopologies() {
         return new ArrayList<>(topologies.values());
