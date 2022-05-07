@@ -9,8 +9,6 @@ import java.util.HashMap;
 @JsonPropertyOrder({"type", "id", "resistance", "netlist"})
 @JsonTypeName("resistor")
 public class Resistor extends Component {
-    private Specifications specifications;
-
     public Resistor() {
     }
 
@@ -19,11 +17,13 @@ public class Resistor extends Component {
         this.specifications = specifications;
     }
 
+    @Override
     @JsonProperty("resistance")
     protected Specifications getSpecifications() {
         return specifications;
     }
 
+    @Override
     protected void setSpecifications(Specifications specifications) {
         this.specifications = specifications;
     }

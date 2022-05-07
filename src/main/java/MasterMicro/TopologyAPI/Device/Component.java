@@ -14,9 +14,10 @@ import java.util.HashMap;
         @JsonSubTypes.Type(value = NMOS.class, name = "nmos"),
         @JsonSubTypes.Type(value = Resistor.class, name = "resistor")
 })
-public class Component {
+public abstract class Component {
     private String id;
     private HashMap<String, String> netList;
+    protected Specifications specifications;
 
     public Component() {
     }
@@ -53,4 +54,8 @@ public class Component {
     protected void setNetList(HashMap<String, String> netList) {
         this.netList = netList;
     }
+
+    protected abstract Specifications getSpecifications();
+
+    protected abstract void setSpecifications(Specifications specifications);
 }
